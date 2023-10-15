@@ -90,7 +90,7 @@ jobs:
           elif [ "${{ github.ref }}" == "refs/heads/main" ]; then
             echo "qa"
             echo "env=qa" >> "$GITHUB_OUTPUT"
-          elif [ startsWith(github.ref, 'releases/release') ]; then
+          elif [ ${{ startsWith(github.ref, 'releases/release') }} ]; then
             echo "production"
             echo "env=prod" >> "$GITHUB_OUTPUT"
           fi
