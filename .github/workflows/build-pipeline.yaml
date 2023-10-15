@@ -131,7 +131,7 @@ jobs:
         id: deploy-aks
         uses: Azure/k8s-deploy@v4
         with:
-          namespace: '${{ steps.select-env.outputs.env }}'
+          namespace: '${{ needs.determine-environment.outputs.env }}'
           manifests: |
             k8s/deployment.yaml
             k8s/service.yaml
