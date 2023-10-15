@@ -94,8 +94,8 @@ jobs:
             echo "production"
             echo "env=prod" >> "$GITHUB_OUTPUT"
           fi
-  outputs:
-    env: ${{ steps.select-env.outputs.env }}
+    outputs:
+      env: ${{ steps.select-env.outputs.env }}
 
   deploy:
     name: Deploy to AKS
