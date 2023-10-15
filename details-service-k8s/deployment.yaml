@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: details-service
+  labels:
+    app: detailsservice
+spec:
+  replicas: 2
+  strategy:
+     type: RollingUpdate
+  selector:
+    matchLabels:
+      app: detailsservice
+  template:
+    metadata:
+      labels:
+        app: detailsservice
+    spec:
+      containers:
+        - name: detailsservice
+          image: mallireddy1998/details-service:##TAG##
+          livenessProbe:
+            httpGet:
+              port: 4047
+              path: /details-service/v1/actuator/health/liveness
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              port: 4047
+              path: /details-service/v1/actuator/health/readiness
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          ports:
+            - containerPort: 4047
