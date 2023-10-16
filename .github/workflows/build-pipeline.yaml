@@ -7,7 +7,7 @@ on:
       - 'main'
       - 'features/**'
   pull_request:
-    branches: main
+    branches: 'dev'
   workflow_dispatch:
 
 jobs:
