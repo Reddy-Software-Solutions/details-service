@@ -3,7 +3,11 @@ name: Details Service CI
 on:
   push:
     branches:
-      - '**'
+      - 'dev'
+      - 'main'
+      - 'features/**'
+  pull_request:
+    branches: main
   workflow_dispatch:
 
 jobs:
@@ -76,6 +80,7 @@ jobs:
         path: k8s/
 
   determine-environment:
+    name: Determine environment
     if: ${{github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/main' || startsWith(github.ref, 'releases/release')}}
     runs-on: ubuntu-latest
     steps:
