@@ -21,4 +21,9 @@ public class DetailsController {
         return "Details application is Running";
     }
 
+    @GetMapping
+    public String getDetails() {
+        return "Fetching Details from source";
+    }
+
 }

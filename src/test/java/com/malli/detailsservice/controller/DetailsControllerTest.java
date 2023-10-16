@@ -21,8 +21,14 @@ class DetailsControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void showMsg() throws Exception {
+    void testStatus() throws Exception {
         this.mockMvc.perform(get("/details/status").accept(MediaType.APPLICATION_JSON))
+                .andDo(print()).andExpect(status().isOk());
+    }
+
+    @Test
+    void testGetDetails() throws Exception {
+        this.mockMvc.perform(get("/details").accept(MediaType.APPLICATION_JSON))
                 .andDo(print()).andExpect(status().isOk());
     }
 }
